@@ -359,4 +359,17 @@ document.addEventListener("click", function(e) {
     sidebar.classList.remove("active");
   }
 });
+document.getElementById("fab").onclick = () => {
+  document.getElementById("expense-form")
+    .scrollIntoView({ behavior: "smooth" });
+};
+function showPage(page) {
 
+  document.querySelectorAll(".page")
+    .forEach(p => p.style.display = "none");
+
+  document.getElementById(page).style.display = "block";
+}
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
