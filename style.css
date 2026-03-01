@@ -212,3 +212,20 @@ body{
 .user-info:hover{
     background:#43e719;
 }
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  input, button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
