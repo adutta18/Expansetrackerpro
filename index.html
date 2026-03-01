@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker Pro</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>💰 Expanse</h2>
+
+<button onclick="showPage('dashboard')">🏠 Dashboard</button>
+<button onclick="showPage('add')">➕ Add Expense</button>
+<button onclick="showPage('reports')">📊 Reports</button>
+
+<hr>
+
+<!-- <p id="userDisplay"></p> -->
+ <div id="userDisplay" class="user-info"></div>
+<button onclick="logout()">Logout</button>
+</div>
+
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- LOGIN -->
+<div id="loginPage" class="page active">
+<h2>Login</h2>
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="loginMsg"></p>
+</div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="page">
+
+<h2>Dashboard</h2>
+
+<div class="card">
+<h3>Total Expense: ₹<span id="total">0</span></h3>
+</div>
+
+<div class="card">
+<input id="budgetInput" type="number" placeholder="Set Monthly Budget">
+<button onclick="setBudget()">Save Budget</button>
+<p>Remaining Budget: ₹ <span id="remaining">0</span></p>
+</div>
+
+<div class="card">
+<h3>🤖 AI Insight</h3>
+<p id="aiInsight">Start adding expenses...</p>
+</div>
+
+</div>
+
+
+<!-- ADD EXPENSE -->
+<div id="add" class="page">
+
+<h2>Add Expense</h2>
+
+<label>Expense Sheet</label>
+<select id="sheet">
+<option value="personal">Personal</option>
+<option value="office">Office</option>
+<option value="family">Family</option>
+</select>
+
+<form id="expense-form">
+
+<select id="type">
+<option>Food</option>
+<option>Travel</option>
+<option>Bills</option>
+<option>Shopping</option>
+<option>Other</option>
+</select>
+
+<input id="custom-type" placeholder="Custom subtype (optional)">
+
+<input type="date" id="date" required>
+<input type="number" id="amount" placeholder="Amount" required>
+
+<button type="submit">Add Expense</button>
+</form>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Date</th>
+<th>Amount</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="expenseTable"></tbody>
+</table>
+
+</div>
+
+<!-- REPORTS -->
+<div id="reports" class="page">
+
+<h2>Analytics</h2>
+
+<div class="report-actions">
+    <h3 class="report-title">Reports & Analytics</h3>
+
+    <div class="export-section">
+        <button id="exportCSV">⬇ Export CSV</button>
+        <button id="exportJSON">⬇ Export JSON</button>
+    </div>
+</div>
+
+<div class="chartBox">
+<canvas id="pieChart"></canvas>
+</div>
+
+<div class="chartBox">
+<canvas id="monthlyChart"></canvas>
+</div>
+
+<div class="chartBox">
+<canvas id="lineChart"></canvas>
+</div>
+
+</div>
+</div>
+
+</div>
+<script src="script.js"></script>
+</div> <!-- close main container -->
+<footer class="app-footer">
+   © 2026 Expanse Tracker Pro • Built by Ajoy
+</footer>
+</body>
+</html>

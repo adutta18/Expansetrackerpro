@@ -1,0 +1,210 @@
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+}
+
+.app{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:230px;
+background:#020617;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h2{
+text-align:center;
+}
+
+.sidebar button{
+margin:8px 0;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#0ea5e9;
+color:white;
+cursor:pointer;
+}
+
+.sidebar button:hover{
+background:#0284c7;
+}
+
+/* MAIN */
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin:15px 0;
+border-radius:12px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:none;
+}
+
+form button{
+background:#22c55e;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* TABLE */
+table{
+width:100%;
+margin-top:15px;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+background:#1e293b;
+}
+
+.edit{
+background:#22c55e;
+border:none;
+padding:6px 10px;
+color:white;
+}
+
+.delete{
+background:#ef4444;
+border:none;
+padding:6px 10px;
+color:white;
+}
+
+.chartBox{
+background:#1e293b;
+padding:20px;
+margin-top:20px;
+border-radius:12px;
+}
+/* ===== EXPORT BUTTONS ===== */
+
+.export-section {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.export-section button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(135deg,#2563eb,#1d4ed8);
+    color: white;
+    transition: 0.3s;
+}
+
+.export-section button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+/* Export buttons refined */
+
+.export-section {
+    display: flex;
+    gap: 10px;
+}
+
+.export-section button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    background: #2563eb;
+    color: white;
+    transition: all 0.25s ease;
+}
+
+.export-section button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+/* ===== PAGE LAYOUT FIX ===== */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+ .app{
+    display:flex;
+    min-height:100vh;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+.app{
+    flex:1;
+} 
+
+/* FOOTER */
+.app-footer {
+    text-align: center;
+    padding: 12px;
+    background: #111827;
+    color: #fff;
+    font-size: 14px;
+}
+/* Fix sidebar divider */
+.sidebar hr{
+    border: none;
+    height: 1px;
+    background: #1e293b;
+    margin: 15px 0;
+}
+#userDisplay{
+    margin: 8px 0;
+    font-size: 14px;
+    color: #94a3b8;
+}
+.user-info{
+    margin:0px 0;
+    padding:0px;
+    background:#0f172a;
+    border-radius:6px;
+    text-align:center;
+    font-size:14px;
+}
