@@ -346,4 +346,11 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
     a.href = url;
     a.download = "expenses.json";
     a.click();
+
+});
+const menuBtn = document.getElementById("menu-toggle");
+const sidebar = document.getElementById("sidebar");
+
+menuBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
 });
