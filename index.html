@@ -4,22 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Expense Tracker Pro</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#007bff">
-<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
- <!-- Mobile Menu Button -->
-<button id="menu-toggle" class="menu-btn">☰</button>
 
 <div class="app">
 
 <!-- SIDEBAR -->
-<div id="sidebar" class="sidebar">
+<div class="sidebar">
 <h2>💰 Expanse</h2>
 
 <button onclick="showPage('dashboard')">🏠 Dashboard</button>
@@ -49,7 +44,6 @@
 
 <!-- DASHBOARD -->
 <div id="dashboard" class="page">
- <div/>
 
 <h2>Dashboard</h2>
 
@@ -116,8 +110,7 @@
 </div>
 
 <!-- REPORTS -->
-<div id="reports" class="page" style="display:none;">
-</div>
+<div id="reports" class="page">
 
 <h2>Analytics</h2>
 
@@ -146,24 +139,10 @@
 </div>
 
 </div>
- <div id="settings" class="page" style="display:none;">
-  <!-- settings -->
- </div>
 <script src="script.js"></script>
 </div> <!-- close main container -->
 <footer class="app-footer">
    © 2026 Expanse Tracker Pro • Built by Ajoy
 </footer>
- <button id="fab">+</button>
- <div class="bottom-nav">
-  <button onclick="showPage('dashboard')">🏠</button>
-  <button onclick="showPage('reports')">📊</button>
-  <button onclick="showPage('settings')">⚙️</button>
- </div>
 </body>
-
 </html>
-
-
-
-
