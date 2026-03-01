@@ -207,4 +207,8 @@ body{
     border-radius:6px;
     text-align:center;
     font-size:14px;
+
+}
+.user-info:hover{
+    background:#43e719;
 }
