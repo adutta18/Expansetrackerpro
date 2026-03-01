@@ -346,30 +346,4 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
     a.href = url;
     a.download = "expenses.json";
     a.click();
-
 });
-const menuBtn = document.getElementById("menu-toggle");
-const sidebar = document.getElementById("sidebar");
-
-menuBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-});
-document.addEventListener("click", function(e) {
-  if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
-    sidebar.classList.remove("active");
-  }
-});
-document.getElementById("fab").onclick = () => {
-  document.getElementById("expense-form")
-    .scrollIntoView({ behavior: "smooth" });
-};
-function showPage(page) {
-
-  document.querySelectorAll(".page")
-    .forEach(p => p.style.display = "none");
-
-  document.getElementById(page).style.display = "block";
-}
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
