@@ -347,3 +347,22 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
     a.download = "expenses.json";
     a.click();
 });
+const ctx = document.getElementById('expenseChart');
+
+new Chart(ctx,{
+  type: 'doughnut',
+  data: {
+    labels: ['Food','Bills','Shopping','Travel'],
+    datasets: [{
+      data: [300, 250, 200, 300],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: { color: 'white' }
+      }
+    }
+  }
+});
