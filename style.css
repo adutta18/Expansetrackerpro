@@ -17,9 +17,9 @@ height:100vh;
 
 /* SIDEBAR */
 .sidebar{
-width: 10vh;
-background:#101416;
-padding:20vh;
+width: 8vh;
+background:#aqua;
+padding:8vh;
 display:flex;
 flex-direction:column;
 }
@@ -290,6 +290,7 @@ body{
 .ai-card {
   border-left: 5px solid #00c896;
 }
+
 
 
 
