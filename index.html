@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Expense Tracker Pro</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
+    <div class="app-container">
 
 <div class="app">
 
 <!-- SIDEBAR -->
 <div class="sidebar">
 <h2>💰 Expanse</h2>
-
+<button class="fab">+</button>
 <button onclick="showPage('dashboard')">🏠 Dashboard</button>
 <button onclick="showPage('add')">➕ Add Expense</button>
 <button onclick="showPage('reports')">📊 Reports</button>
@@ -52,11 +56,23 @@
 </div>
 
 <div class="card">
+   <h3>Spending Overview</h3>
+   <canvas id="expenseChart"></canvas>
+</div>
+<div class="card">
 <input id="budgetInput" type="number" placeholder="Set Monthly Budget">
 <button onclick="setBudget()">Save Budget</button>
 <p>Remaining Budget: ₹ <span id="remaining">0</span></p>
 </div>
+<div class="card">
+  <h3>Category Spending</h3>
 
+  <div class="progress-item">
+     Food ₹1200
+     <div class="progress"><span style="width:60%"></span></div>
+  </div>
+
+</div>
 <div class="card">
 <h3>🤖 AI Insight</h3>
 <p id="aiInsight">Start adding expenses...</p>
@@ -144,5 +160,6 @@
 <footer class="app-footer">
    © 2026 Expanse Tracker Pro • Built by Ajoy
 </footer>
+</div>
 </body>
 </html>
