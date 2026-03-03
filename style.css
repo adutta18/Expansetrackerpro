@@ -5,7 +5,7 @@ body {
 }
 
 .app-container {
-  max-width: 480px;
+  max-width: 100vh;
   margin: auto;
   min-height: 100vh;
   background: #0b132b;
@@ -290,3 +290,4 @@ body{
 .ai-card {
   border-left: 5px solid #00c896;
 }
+
