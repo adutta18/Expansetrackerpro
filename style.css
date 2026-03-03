@@ -17,9 +17,9 @@ height:100vh;
 
 /* SIDEBAR */
 .sidebar{
-width: 20vh;
+width: 10vh;
 background:#101416;
-padding:20px;
+padding:20vh;
 display:flex;
 flex-direction:column;
 }
@@ -78,7 +78,7 @@ border:none;
 }
 
 form button{
-background:#22c55e;
+background:#22c56e;
 color:white;
 padding:12px;
 border:none;
@@ -290,5 +290,6 @@ body{
 .ai-card {
   border-left: 5px solid #00c896;
 }
+
 
 
