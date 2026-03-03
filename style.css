@@ -290,6 +290,116 @@ body{
 .ai-card {
   border-left: 5px solid #00c896;
 }
+/* ===============================
+   GLOBAL LAYOUT FIX
+=================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #0a1931, #001f3f);
+}
+
+/* ===============================
+   MAIN CONTAINER
+=================================*/
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===============================
+   SIDEBAR (Desktop)
+=================================*/
+
+.sidebar {
+    width: 240px;
+    background: #08121f;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+/* ===============================
+   MAIN CONTENT
+=================================*/
+
+.main-content {
+    margin-left: 240px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Make cards responsive */
+.card {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* ===============================
+   FLOATING BUTTON FIX
+=================================*/
+
+.fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #2ecc71;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+=================================*/
+
+@media (max-width: 768px) {
+
+    /* Hide sidebar by default */
+    .sidebar {
+        position: fixed;
+        left: -240px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    /* When active (if you use toggle class) */
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Full width content */
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    /* Cards full width */
+    .card {
+        max-width: 100%;
+    }
+
+    /* Make chart responsive */
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
 
 
 
