@@ -1,10 +1,15 @@
-body{
-margin:0;
-font-family:Segoe UI;
-background:#0f172a;
-color:white;
+body {
+  margin: 0;
+  background: #0b132b;
+  font-family: system-ui, sans-serif;
 }
 
+.app-container {
+  max-width: 480px;
+  margin: auto;
+  min-height: 100vh;
+  background: #0b132b;
+}
 .app{
 display:flex;
 height:100vh;
@@ -13,7 +18,7 @@ height:100vh;
 /* SIDEBAR */
 .sidebar{
 width: 120px;
-background:#1f8dcc;
+background:#101416;
 padding:20px;
 display:flex;
 flex-direction:column;
@@ -28,7 +33,7 @@ margin:8px 0;
 padding:12px;
 border:none;
 border-radius:8px;
-background:#0ea5e9;
+background:#30cc71;
 color:white;
 cursor:pointer;
 }
@@ -52,11 +57,16 @@ display:none;
 display:block;
 }
 
-.card{
-background:#1e293b;
-padding:20px;
-margin:15px 0;
-border-radius:12px;
+.card {
+  background: #1c2541;
+  border-radius: 18px;
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  color: white;
+}
+.card:active {
+  transform: scale(0.98);
 }
 
 input,select{
@@ -239,4 +249,44 @@ body{
 }
 .card, .chartBox, .export-section {
   max-width: 100%;
+}
+.progress {
+  background:#2a3555;
+  border-radius:10px;
+  height:8px;
+  margin-top:5px;
+}
+
+.progress span {
+  display:block;
+  height:100%;
+  background:#3a86ff;
+  border-radius:10px;
+}
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #3a86ff;
+  color: white;
+  font-size: 28px;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  background: #1c2541;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #2a3555;
+}
+.ai-card {
+  border-left: 5px solid #00c896;
 }
