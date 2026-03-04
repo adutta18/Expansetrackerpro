@@ -7,29 +7,25 @@ let pieChartInstance = null;
 let monthlyChartInstance = null;
 let lineChartInstance = null;
 
-/* ================= USER DISPLAY FIX ================= */
-const userDisplay = document.getElementById("userDisplay");
-
 /* ================= AUTO LOGIN (NEW) ================= */
+
 window.addEventListener("load", function(){
 
     const savedUser = localStorage.getItem("loggedInUser");
 
     if(savedUser){
+
         currentUser = savedUser;
 
+        const userDisplay = document.getElementById("userDisplay");
         if(userDisplay){
             userDisplay.innerText = "👤 " + savedUser;
         }
 
         loadExpenses();
         showPage("dashboard");
-    } else {
-        showPage("login");
     }
-
 });
-
 
 /* ================= PAGE SWITCH ================= */
 
@@ -69,11 +65,11 @@ if (!saved) {
     return;
 }
 
-currentUser = user;
-
 /* ===== NEW LINE ADDED ===== */
+currentUser = user;
 localStorage.setItem("loggedInUser", user);
 
+const userDisplay = document.getElementById("userDisplay");
 if(userDisplay){
     userDisplay.innerText = "👤 " + user;
 }
@@ -413,3 +409,4 @@ new Chart(ctx,{
 function toggleSidebar() {
     document.querySelector(".sidebar").classList.toggle("active");
 }
+
