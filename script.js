@@ -7,6 +7,29 @@ let pieChartInstance = null;
 let monthlyChartInstance = null;
 let lineChartInstance = null;
 
+/* ================= USER DISPLAY FIX ================= */
+const userDisplay = document.getElementById("userDisplay");
+
+/* ================= AUTO LOGIN (NEW) ================= */
+window.addEventListener("load", function(){
+
+    const savedUser = localStorage.getItem("loggedInUser");
+
+    if(savedUser){
+        currentUser = savedUser;
+
+        if(userDisplay){
+            userDisplay.innerText = "👤 " + savedUser;
+        }
+
+        loadExpenses();
+        showPage("dashboard");
+    } else {
+        showPage("login");
+    }
+
+});
+
 
 /* ================= PAGE SWITCH ================= */
 
@@ -31,7 +54,6 @@ const user = document.getElementById("username").value.trim();
 const pass = document.getElementById("password").value.trim();
 
 if (!user || !pass) {
-    // loginMsg.innerText = "Enter credentials";
     document.getElementById("loginMsg").innerText =
 "Enter credentials";
     return;
@@ -42,14 +64,19 @@ const saved = localStorage.getItem("pass_" + user);
 if (!saved) {
     localStorage.setItem("pass_" + user, pass);
 } else if (saved !== pass) {
-    // loginMsg.innerText = "Wrong password";
     document.getElementById("loginMsg").innerText =
 "Wrong password";
     return;
 }
 
 currentUser = user;
-userDisplay.innerText = "👤 " + user;
+
+/* ===== NEW LINE ADDED ===== */
+localStorage.setItem("loggedInUser", user);
+
+if(userDisplay){
+    userDisplay.innerText = "👤 " + user;
+}
 
 loadExpenses();
 showPage("dashboard");
@@ -59,7 +86,11 @@ showPage("dashboard");
 /* ================= LOGOUT ================= */
 
 function logout() {
-location.reload();
+
+localStorage.removeItem("loggedInUser");
+currentUser = null;
+showPage("login");
+
 }
 
 
@@ -281,9 +312,10 @@ tension:0.4
 
 document.getElementById("sheet")
 .addEventListener("change", loadExpenses);
-/* ===============================
-   EXPORT DATA FEATURE
-================================ */
+
+
+/* ================= EXPORT DATA FEATURE ================= */
+
 function getAllExpenses() {
 
     let all = [];
@@ -298,6 +330,8 @@ function getAllExpenses() {
 
     return all;
 }
+
+
 /* ---------- CSV EXPORT ---------- */
 document.getElementById("exportCSV")?.addEventListener("click", () => {
 
@@ -312,7 +346,6 @@ document.getElementById("exportCSV")?.addEventListener("click", () => {
         "Date,Title,Category,Subcategory,Amount\n";
 
     data.forEach(exp => {
-        // csv += `${exp.date},${exp.title},${exp.category},${exp.subcategory},${exp.amount}\n`;
         csv += `${exp.date},${exp.type},,${exp.amount}\n`;
     });
 
@@ -324,6 +357,7 @@ document.getElementById("exportCSV")?.addEventListener("click", () => {
     a.download = "expenses.csv";
     a.click();
 });
+
 
 /* ---------- JSON EXPORT ---------- */
 document.getElementById("exportJSON")?.addEventListener("click", () => {
@@ -347,8 +381,13 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
     a.download = "expenses.json";
     a.click();
 });
+
+
+/* ================= STATIC DOUGHNUT ================= */
+
 const ctx = document.getElementById('expenseChart');
 
+if(ctx){
 new Chart(ctx,{
   type: 'doughnut',
   data: {
@@ -366,6 +405,11 @@ new Chart(ctx,{
     }
   }
 });
+}
+
+
+/* ================= SIDEBAR ================= */
+
 function toggleSidebar() {
     document.querySelector(".sidebar").classList.toggle("active");
 }
