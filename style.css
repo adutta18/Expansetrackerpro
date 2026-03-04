@@ -1,407 +1,271 @@
-body {
-  margin: 0;
-  background: #0b132b;
-  font-family: system-ui, sans-serif;
-}
-
-.app-container {
-  max-width: 100vh;
-  margin: auto;
-  min-height: 100vh;
-  background: #0b132b;
-}
-.app{
-display:flex;
-height:100vh;
-}
-
-/* SIDEBAR */
-.sidebar{
-width: 6vh;
-background:#aqua;
-padding:6vh;
-display:flex;
-flex-direction:column;
-}
-
-.sidebar h2{
-text-align:center;
-}
-
-.sidebar button{
-margin:8px 0;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#30cc71;
-color:white;
-cursor:pointer;
-}
-
-.sidebar button:hover{
-background:#0284c7;
-}
-
-/* MAIN */
-.main{
-flex:1;
-padding:30px;
-overflow:auto;
-}
-
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
-
-.card {
-  background: #1c2541;
-  border-radius: 18px;
-  padding: 20px;
-  margin: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  color: white;
-}
-.card:active {
-  transform: scale(0.98);
-}
-
-input,select{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:6px;
-border:none;
-}
-
-form button{
-background:#22c56e;
-color:white;
-padding:12px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-/* TABLE */
-table{
-width:100%;
-margin-top:15px;
-border-collapse:collapse;
-}
-
-th,td{
-padding:10px;
-text-align:center;
-background:#1e293b;
-}
-
-.edit{
-background:#22c55e;
-border:none;
-padding:6px 10px;
-color:white;
-}
-
-.delete{
-background:#ef4444;
-border:none;
-padding:6px 10px;
-color:white;
-}
-
-.chartBox{
-background:#1e293b;
-padding:20px;
-margin-top:20px;
-border-radius:12px;
-}
-/* ===== EXPORT BUTTONS ===== */
-
-.export-section {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.export-section button {
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(135deg,#2563eb,#1d4ed8);
-    color: white;
-    transition: 0.3s;
-}
-
-.export-section button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-}
-/* Export buttons refined */
-
-.export-section {
-    display: flex;
-    gap: 10px;
-}
-
-.export-section button {
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    background: #2563eb;
-    color: white;
-    transition: all 0.25s ease;
-}
-
-.export-section button:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-}
-/* ===== PAGE LAYOUT FIX ===== */
-
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
- .app{
-    display:flex;
-    min-height:100vh;
-}
-
-body{
-    display:flex;
-    flex-direction:column;
-}
-
-.app{
-    flex:1;
-} 
-
-/* FOOTER */
-.app-footer {
-    text-align: center;
-    padding: 12px;
-    background: #111827;
-    color: #fff;
-    font-size: 14px;
-}
-/* Fix sidebar divider */
-.sidebar hr{
-    border: none;
-    height: 1px;
-    background: #1e293b;
-    margin: 15px 0;
-}
-#userDisplay{
-    margin: 8px 0;
-    font-size: 14px;
-    color: #94a3b8;
-}
-.user-info{
-    margin:0px 0;
-    padding:0px;
-    background:#0f172a;
-    border-radius:6px;
-    text-align:center;
-    font-size:14px;
-}
-.user-info:hover{
-    background:#43e719;
-}
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    z-index: 1000;
-  }
-
-  .sidebar button {
-    flex: 1;
-    margin: 0 4px;
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  .main {
-    padding: 15px;
-    margin-bottom: 60px; /* leave space for fixed nav */
-  }
-}
-.card, .chartBox, .export-section {
-  max-width: 100%;
-}
-.progress {
-  background:#2a3555;
-  border-radius:10px;
-  height:8px;
-  margin-top:5px;
-}
-
-.progress span {
-  display:block;
-  height:100%;
-  background:#3a86ff;
-  border-radius:10px;
-}
-.fab {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #3a86ff;
-  color: white;
-  font-size: 28px;
-  border: none;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-}
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 480px;
-  background: #1c2541;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0;
-  border-top: 1px solid #2a3555;
-}
-.ai-card {
-  border-left: 5px solid #00c896;
-}
 /* ===============================
-   GLOBAL LAYOUT FIX
+   GLOBAL RESET
 =================================*/
-
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #0a1931, #001f3f);
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0b132b, #1c2541);
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ===============================
-   MAIN CONTAINER
+   APP LAYOUT
 =================================*/
-
-.container {
+.app {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* ===============================
-   SIDEBAR (Desktop)
+   SIDEBAR (DESKTOP)
 =================================*/
-
 .sidebar {
-    width: 240px;
-    background: #08121f;
-    padding: 20px;
-    position: fixed;
-    height: 100%;
-    left: 0;
-    top: 0;
+    width: 220px;
+    background: #111827;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #1e293b;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.sidebar button {
+    margin: 6px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar button:hover {
+    background: #1d4ed8;
+}
+
+.sidebar hr {
+    border: none;
+    height: 1px;
+    background: #334155;
+    margin: 15px 0;
+}
+
+.user-info {
+    margin-top: 10px;
+    padding: 8px;
+    background: #1e293b;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
 }
 
 /* ===============================
    MAIN CONTENT
 =================================*/
-
-.main-content {
-    margin-left: 240px;
-    padding: 20px;
-    width: 100%;
-}
-
-/* Make cards responsive */
-.card {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+.main {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
 }
 
 /* ===============================
-   FLOATING BUTTON FIX
+   PAGES
 =================================*/
+.page {
+    display: none;
+}
 
+.page.active {
+    display: block;
+}
+
+/* ===============================
+   CARDS
+=================================*/
+.card {
+    background: #1c2541;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+/* ===============================
+   FORM ELEMENTS
+=================================*/
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+form button {
+    width: 100%;
+    background: #22c55e;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===============================
+   TABLE
+=================================*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    background: #1e293b;
+}
+
+.edit {
+    background: #22c55e;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 6px;
+}
+
+.delete {
+    background: #ef4444;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 6px;
+}
+
+/* ===============================
+   CHART BOX
+=================================*/
+.chartBox {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* ===============================
+   EXPORT BUTTONS
+=================================*/
+.export-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.export-section button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.export-section button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   FLOATING ACTION BUTTON
+=================================*/
 .fab {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: 25px;
+    bottom: 25px;
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: #2ecc71;
+    background: #3a86ff;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 24px;
+    justify-content: center;
+    font-size: 26px;
     color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+/* ===============================
+   FOOTER
+=================================*/
+.app-footer {
+    text-align: center;
+    padding: 10px;
+    background: #111827;
+    font-size: 14px;
 }
 
 /* ===============================
    MOBILE RESPONSIVE
 =================================*/
-
 @media (max-width: 768px) {
 
-    /* Hide sidebar by default */
+    body {
+        overflow: auto;
+    }
+
+    .app {
+        flex-direction: column;
+    }
+
     .sidebar {
-        position: fixed;
-        left: -240px;
-        transition: 0.3s;
-        z-index: 1000;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
     }
 
-    /* When active (if you use toggle class) */
-    .sidebar.active {
-        left: 0;
+    .sidebar button {
+        flex: 1;
+        margin:0;   
+        font-size: 12px;
+        padding: 5px;
     }
 
-    /* Full width content */
-    .main-content {
-        margin-left: 0;
+    .main {
         padding: 15px;
     }
 
-    /* Cards full width */
-    .card {
-        max-width: 100%;
+    table {
+        font-size: 12px;
     }
 
-    /* Make chart responsive */
     canvas {
         width: 100% !important;
         height: auto !important;
     }
 }
-
-
-
-
-
