@@ -247,17 +247,20 @@ th, td {
         flex-direction: row;
         justify-content: space-around;
         padding: 10px;
+        background-color: #111113;
     }
 
     .sidebar button {
         flex: 1;
         margin:0;   
         font-size: 12px;
-        padding: 5px;
+        padding: 1px;
+        background-color: #e41ee4;
     }
 
     .main {
         padding: 15px;
+        background-color: #518dee;
     }
 
     table {
