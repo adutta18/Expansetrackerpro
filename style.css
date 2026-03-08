@@ -236,6 +236,7 @@ th, td {
 
     body {
         overflow: auto;
+        touch-action: pan-y;
     }
 
     .app {
@@ -246,7 +247,7 @@ th, td {
         width: 100%;
         flex-direction: row;
         justify-content: space-around;
-        padding: 10px;
+        padding: 8px;
         background-color: #111113;
     }
 
