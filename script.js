@@ -194,7 +194,7 @@ updateDashboard();
 
 /* ================= DASHBOARD ================= */
 
-function updateDashboard(){
+/*function updateDashboard(){
 
 const total = expenses.reduce((s,e)=>s+e.amount,0);
 
@@ -207,8 +207,60 @@ document.getElementById("remaining").innerText =
 budget - total;
 
 updateAI(total);
+}/*
+
+/* ================= DASHBOARD ================= */
+
+function updateDashboard(){
+
+    const total = expenses.reduce((s,e)=>s+e.amount,0);
+
+    document.getElementById("total").innerText = total;
+
+    const budget = localStorage.getItem("budget_"+currentUser) || 0;
+
+    document.getElementById("remaining").innerText = budget - total;
+
+    // Call the new helper function to auto-populate Category Spending text list
+    renderCategorySpendingList();
+
+    updateAI(total);
 }
 
+/* ================= CATEGORY SPENDING LIST (NEW) ================= */
+
+function renderCategorySpendingList() {
+    // Find or target your Category Spending container element
+    const container = document.getElementById("categorySpendingContainer") || document.querySelector(".category-spending-list");
+    
+    if (!container) return; // Guard clause in case HTML element ID doesn't match yet
+
+    // Clear previous items but keep the header title intact if it's inside
+    // If your container wraps the header, ensure you append after it or structure like this:
+    container.innerHTML = `<h3 style="margin-bottom: 10px; color: white;">Category Spending</h3>`;
+
+    if (expenses.length === 0) {
+        container.innerHTML += `<p style="color: #aaa; font-size: 14px;">No categories tracked yet.</p>`;
+        return;
+    }
+
+    // Calculate dynamic category totals from current active sheet expenses
+    const categories = {};
+    expenses.forEach(e => {
+        const catName = e.type || "Uncategorized";
+        categories[catName] = (categories[catName] || 0) + e.amount;
+    });
+
+    // Generate dynamic clean rows with styling that matches your dashboard theme
+    Object.keys(categories).forEach(cat => {
+        container.innerHTML += `
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; font-size: 15px;">
+                <span>📂 ${cat}</span>
+                <span style="font-weight: bold;">₹${categories[cat]}</span>
+            </div>
+        `;
+    });
+}
 
 /* ================= BUDGET ================= */
 
