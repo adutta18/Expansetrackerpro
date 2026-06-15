@@ -211,7 +211,7 @@ updateAI(total);
 
 /* ================= DASHBOARD ================= */
 
-function updateDashboard(){
+/*function updateDashboard(){
 
     const total = expenses.reduce((s,e)=>s+e.amount,0);
 
@@ -225,7 +225,28 @@ function updateDashboard(){
     renderCategorySpendingList();
 
     updateAI(total);
+}/*
+/* ================= DASHBOARD ================= */
+
+function updateDashboard(){
+
+    const total = expenses.reduce((s,e)=>s+e.amount,0);
+
+    document.getElementById("total").innerText = total;
+
+    const budget = localStorage.getItem("budget_"+currentUser) || 0;
+
+    document.getElementById("remaining").innerText = budget - total;
+
+    // Call the new helper function to auto-populate Category Spending text list
+    renderCategorySpendingList();
+
+    // 🔴 FIX: Call the chart rendering function to sync your Pie and Bar charts
+    renderCharts();
+
+    updateAI(total);
 }
+
 
 /* ================= CATEGORY SPENDING LIST (NEW) ================= */
 
@@ -296,7 +317,7 @@ el.innerText = "🚨 High spending detected.";
 
 /* ================= CHARTS ================= */
 
-function renderCharts(){
+/*function renderCharts(){
 
 const cat = {};
 const month = {};
@@ -307,7 +328,27 @@ cat[e.type]=(cat[e.type]||0)+e.amount;
 const m=e.date.slice(0,7);
 month[m]=(month[m]||0)+e.amount;
 });
+/*
+/* ================= CHARTS ================= */
 
+function renderCharts(){
+
+const cat = {};
+const month = {};
+
+expenses.forEach(e=>{
+    // Handle dynamic categories safely
+    const catName = e.type || "Uncategorized";
+    cat[catName] = (cat[catName] || 0) + e.amount;
+
+    // Safety check: Prevent slice code crashes if a date is missing
+    const dateStr = e.date ? String(e.date) : new Date().toISOString();
+    const m = dateStr.slice(0,7);
+    month[m] = (month[m] || 0) + e.amount;
+});
+
+// ... rest of your Chart.js instantiation logic remains exactly the same
+    
 
 /* PIE */
 const pieCtx = document.getElementById("pieChart").getContext("2d");
