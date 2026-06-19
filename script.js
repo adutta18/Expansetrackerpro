@@ -333,15 +333,20 @@ month[m]=(month[m]||0)+e.amount;
 
 function renderCharts(){
 
+const allExpenses = getAllExpenses(); // 🔥 CHANGE HERE
+
+if(allExpenses.length === 0){
+    console.log("No data for chart");
+    return;
+}
+
 const cat = {};
 const month = {};
 
-expenses.forEach(e=>{
-    // Handle dynamic categories safely
+allExpenses.forEach(e=>{
     const catName = e.type || "Uncategorized";
     cat[catName] = (cat[catName] || 0) + e.amount;
 
-    // Safety check: Prevent slice code crashes if a date is missing
     const dateStr = e.date ? String(e.date) : new Date().toISOString();
     const m = dateStr.slice(0,7);
     month[m] = (month[m] || 0) + e.amount;
