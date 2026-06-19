@@ -474,7 +474,7 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
 
 /* ================= STATIC DOUGHNUT ================= */
 
-const ctx = document.getElementById('expenseChart');
+/*const ctx = document.getElementById('expenseChart');
 
 if(ctx){
 new Chart(ctx,{
@@ -494,7 +494,7 @@ new Chart(ctx,{
     }
   }
 });
-}
+}/*
 
 
 /* ================= SIDEBAR ================= */
