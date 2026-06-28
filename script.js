@@ -331,26 +331,92 @@ month[m]=(month[m]||0)+e.amount;
 /*
 /* ================= CHARTS ================= */
 
+// function renderCharts(){
+
+// if(expenses.length === 0){
+//     console.log("No data for chart");
+//     return;
+// }
+
+// expenses.forEach(e=>{
+//     const catName = e.type || "Uncategorized";
+//     cat[catName] = (cat[catName] || 0) + e.amount;
+
+//     const dateStr = e.date ? String(e.date) : new Date().toISOString();
+//     const m = dateStr.slice(0,7);
+//     month[m] = (month[m] || 0) + e.amount;
+// });
 function renderCharts(){
+    if(expenses.length === 0){
+        console.log("No data for chart");
+        return;
+    }
 
-const allExpenses = getAllExpenses(); // 🔥 CHANGE HERE
+    const cat = {};
+    const month = {};
 
-if(allExpenses.length === 0){
-    console.log("No data for chart");
-    return;
+    expenses.forEach(e=>{
+        const catName = e.type || "Uncategorized";
+        cat[catName] = (cat[catName] || 0) + e.amount;
+
+        const dateStr = e.date ? String(e.date) : new Date().toISOString();
+        const m = dateStr.slice(0,7);
+        month[m] = (month[m] || 0) + e.amount;
+    });
+
+    /* PIE - Dashboard */
+    const dashPieCtx = document.getElementById("dashboardPieChart")?.getContext("2d");
+    if(dashPieCtx){
+        if(pieChartInstance) pieChartInstance.destroy();
+        pieChartInstance = new Chart(dashPieCtx,{
+            type:"pie",
+            data:{ labels:Object.keys(cat), datasets:[{data:Object.values(cat)}] }
+        });
+    }
+
+    /* PIE - Reports */
+    const reportsPieCtx = document.getElementById("reportsPieChart")?.getContext("2d");
+    if(reportsPieCtx){
+        if(window.reportsPieChartInstance) window.reportsPieChartInstance.destroy();
+        window.reportsPieChartInstance = new Chart(reportsPieCtx,{
+            type:"pie",
+            data:{ labels:Object.keys(cat), datasets:[{data:Object.values(cat)}] }
+        });
+    }
+
+    /* BAR */
+    const barCtx = document.getElementById("monthlyChart")?.getContext("2d");
+    if(barCtx){
+        if(monthlyChartInstance) monthlyChartInstance.destroy();
+        monthlyChartInstance = new Chart(barCtx,{
+            type:"bar",
+            data:{ labels:Object.keys(month), datasets:[{label:"Monthly Spend",data:Object.values(month)}] }
+        });
+    }
+
+    /* LINE */
+    const lineCtx = document.getElementById("lineChart")?.getContext("2d");
+    if(lineCtx){
+        if(lineChartInstance) lineChartInstance.destroy();
+        lineChartInstance = new Chart(lineCtx,{
+            type:"line",
+            data:{ labels:Object.keys(cat), datasets:[{label:"Expense Trend",data:Object.values(cat),tension:0.4}] }
+        });
+    }
+
+    /* COLUMN */
+    const columnCtx = document.getElementById("columnChart")?.getContext("2d");
+    if(columnCtx){
+        if(window.columnChartInstance) window.columnChartInstance.destroy();
+        window.columnChartInstance = new Chart(columnCtx,{
+            type:"bar",
+            data:{ labels:Object.keys(cat), datasets:[{label:"Category Spend",data:Object.values(cat),backgroundColor:"rgba(54,162,235,0.6)"}] },
+            options:{ plugins:{legend:{display:false}}, scales:{x:{title:{display:true,text:"Categories"}},y:{title:{display:true,text:"Amount (₹)"}}}}
+        });
+    }
 }
 
-const cat = {};
-const month = {};
 
-allExpenses.forEach(e=>{
-    const catName = e.type || "Uncategorized";
-    cat[catName] = (cat[catName] || 0) + e.amount;
-
-    const dateStr = e.date ? String(e.date) : new Date().toISOString();
-    const m = dateStr.slice(0,7);
-    month[m] = (month[m] || 0) + e.amount;
-});
 
 // ... rest of your Chart.js instantiation logic remains exactly the same
     
@@ -399,7 +465,31 @@ tension:0.4
 }]
 }
 });
-}
+/* CLUSTERED COLUMN */
+const columnCtx = document.getElementById("columnChart").getContext("2d");
+
+if(window.columnChartInstance) window.columnChartInstance.destroy();
+
+window.columnChartInstance = new Chart(columnCtx, {
+    type: "bar",
+    data: {
+        labels: Object.keys(cat),
+        datasets: [{
+            label: "Category Spend",
+            data: Object.values(cat),
+            backgroundColor: "rgba(54, 162, 235, 0.6)"
+        }]
+    },
+    options: {
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: { title: { display: true, text: "Categories" } },
+            y: { title: { display: true, text: "Amount (₹)" } }
+        }
+    }
+});
 
 
 /* ================= SHEET SWITCH ================= */
@@ -479,19 +569,28 @@ document.getElementById("exportJSON")?.addEventListener("click", () => {
 
 /* ================= STATIC DOUGHNUT ================= */
 
-/*const ctx = document.getElementById('expenseChart');
+const ctx = document.getElementById('expenseChart');
 
 if(ctx){
-new Chart(ctx,{
-  type: 'doughnut',
-  data: {
-    labels: ['Food','Bills','Shopping','Travel'],
-    datasets: [{
-      data: [300, 250, 200, 300],
-      borderWidth: 0
-    }]
-  },
-  options: {
+    if (window.dougnutChartInstance) {
+        window.dougnutChartInstance.destroy();
+    }
+    const categories = {};
+    expenses.forEach(e => {
+        const catName = e.type || "Uncategorized";
+        categories[catName] = (categories[catName] || 0) + e.amount;
+    });
+    
+    new Chart(ctx,{
+    type: 'doughnut',
+    data: {
+labels: ['Food','Bills','Shopping','Travel'],
+datasets: [{
+data: [300, 250, 200, 300],
+borderWidth: 0
+  }]
+   },
+options: {
     plugins: {
       legend: {
         labels: { color: 'white' }
@@ -499,12 +598,13 @@ new Chart(ctx,{
     }
   }
 });
-}/*
+
+}
 
 
 /* ================= SIDEBAR ================= */
 
 function toggleSidebar() {
     document.querySelector(".sidebar").classList.toggle("active");
+    document.querySelector(".content").classList.toggle("active");
 }
-
