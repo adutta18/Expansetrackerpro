@@ -10,7 +10,7 @@
 body {
     font-family: system-ui, -apple-system, sans-serif;
     background: linear-gradient(135deg, #0b132b, #1c2541);
-    color: #ffffff;
+    color: #f2f3f3;
     height: 100vh;
     overflow: hidden;
 }
@@ -49,20 +49,21 @@ body {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background: #2563eb;
+    background: #73e671;
     color: white;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .sidebar button:hover {
-    background: #1d4ed8;
+    background: #05db4c;
 }
 
 .sidebar hr {
     border: none;
     height: 1px;
     background: #334155;
+    color: #e1e5eb;
     margin: 15px 0;
 }
 
@@ -99,12 +100,13 @@ body {
    CARDS
 =================================*/
 .card {
-    background: #1c2541;
+    background: #16ccda;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 18px rgba(25, 226, 68, 0.3);
     transition: 0.2s;
+    color: #19191a;
 }
 
 .card:active {
@@ -120,11 +122,13 @@ input, select {
     margin: 8px 0;
     border-radius: 8px;
     border: none;
+    font-size: 14px;
+    color: #21ecd1;
 }
 
 form button {
     width: 100%;
-    background: #22c55e;
+    background: #dcf11b;
     color: white;
     padding: 12px;
     border: none;
@@ -167,7 +171,7 @@ th, td {
    CHART BOX
 =================================*/
 .chartBox {
-    background: #1e293b;
+    background: #71a1d8;
     padding: 20px;
     border-radius: 12px;
 }
@@ -186,7 +190,7 @@ th, td {
     padding: 10px;
     border-radius: 8px;
     border: none;
-    background: #2563eb;
+    background: #04ebdf;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -213,7 +217,7 @@ th, td {
     align-items: center;
     justify-content: center;
     font-size: 26px;
-    color: white;
+    color: rgb(233, 240, 239);
     border: none;
     box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     cursor: pointer;
@@ -254,22 +258,23 @@ th, td {
     .sidebar button {
         flex: 1;
         margin:0;   
-        font-size: 12px;
+        font-size: 13px;
         padding: 1px;
-        background-color: #e41ee4;
+        background-color: #18dfbef3;
     }
 
     .main {
         padding: 15px;
-        background-color: #FFA500;
+        background-color: #65e6eb;
     }
 
     table {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     canvas {
         width: 100% !important;
         height: auto !important;
+        color: #eee3e3;
     }
 }
