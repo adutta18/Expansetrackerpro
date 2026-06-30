@@ -32,12 +32,25 @@
 <div class="main">
 
 <!-- LOGIN -->
+<!-- LOGIN -->
 <div id="loginPage" class="page active">
-<h2>Login</h2>
-<input id="username" placeholder="Username">
-<input id="password" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p id="loginMsg"></p>
+  <h2>Login</h2>
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="loginMsg"></p>
+  <p>
+    <a href="#" onclick="showPage('forgotPassword')">Forgot Password?</a>
+  </p>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="forgotPassword" class="page">
+  <h2>Reset Password</h2>
+  <input id="resetUsername" placeholder="Enter Username">
+  <input id="newPassword" type="password" placeholder="New Password">
+  <button onclick="resetPassword()">Reset</button>
+  <p id="resetMsg"></p>
 </div>
 
 <!-- DASHBOARD -->
@@ -51,6 +64,9 @@
 <div class="card">
    <h3>Spending Overview</h3>
    <canvas id="dashboardPieChart"></canvas>
+ <div class="card">
+  <canvas id="dashboardColumnChart"></canvas>
+</div>
 </div>
 
 <div class="card">
