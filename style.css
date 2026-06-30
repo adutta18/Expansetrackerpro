@@ -9,15 +9,26 @@
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #0b132b, #1c2541);
-    color: #f2f3f3;
+    /* background: linear-gradient(135deg, #0b132b, #1c2541);
+    color: #f2f3f3; */
     height: 100vh;
     overflow: hidden;
+    background: #ee81ee;
+  color: #f1f5f9;
 }
+
 
 /* ===============================
    APP LAYOUT
 =================================*/
+#forgotPassword {
+  max-width: 400px;
+  margin: auto;
+}
+#forgotPassword h2 {
+  margin-bottom: 15px;
+}
+
 .app {
     display: flex;
     height: 100vh;
@@ -28,7 +39,7 @@ body {
 =================================*/
 .sidebar {
     width: 220px;
-    background: #111827;
+    background: #50bef1;
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
@@ -36,12 +47,13 @@ body {
 }
 
 .sidebar h2 {
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom: 20px;
     padding: 10px;
-    background: #1e293b;
+    background: #0adce4;
     border-radius: 8px;
     text-align: center;
+
 }
 
 .sidebar button {
@@ -49,20 +61,26 @@ body {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background: #73e671;
-    color: white;
+    /* background: #73e671; */
+    /* color: white; */
     cursor: pointer;
     transition: 0.2s;
+      background: #dfd6d8;
+  color: #181616;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-weight: 600;
 }
 
 .sidebar button:hover {
-    background: #05db4c;
+    /* background: #05db4c; */
+    background: #dff328;
 }
 
 .sidebar hr {
     border: none;
     height: 1px;
-    background: #334155;
+    background: #f4f6f8;
     color: #e1e5eb;
     margin: 15px 0;
 }
@@ -70,8 +88,10 @@ body {
 .user-info {
     margin-top: 10px;
     padding: 8px;
-    background: #1e293b;
+    background: #a3f05b;
+    color: #080a0a;
     border-radius: 6px;
+    font-style: bold;
     text-align: center;
     font-size: 14px;
 }
@@ -100,14 +120,19 @@ body {
    CARDS
 =================================*/
 .card {
-    background: #16ccda;
+    /* background: #16ccda; */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(25, 226, 68, 0.3);
     transition: 0.2s;
     color: #19191a;
+    background: #0f1318;
+  color: #f1f5f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(24, 31, 32, 0.4);
 }
+
 
 .card:active {
     transform: scale(0.98);
@@ -123,18 +148,20 @@ input, select {
     border-radius: 8px;
     border: none;
     font-size: 14px;
-    color: #21ecd1;
+    font-style:bold;
+    color: #161f1d;
 }
 
-form button {
+/* form button {
     width: 100%;
-    background: #dcf11b;
-    color: white;
+    background: #6aebae;
+    color: rgb(8, 8, 8);
     padding: 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-}
+    font-weight: 600;
+} */
 
 /* ===============================
    TABLE
@@ -148,7 +175,7 @@ table {
 th, td {
     padding: 10px;
     text-align: center;
-    background: #1e293b;
+    background: #080a0e;
 }
 
 .edit {
@@ -171,9 +198,10 @@ th, td {
    CHART BOX
 =================================*/
 .chartBox {
-    background: #71a1d8;
+    background: #cfe0e4;
     padding: 20px;
     border-radius: 12px;
+    margin-top: 20px;
 }
 
 /* ===============================
@@ -198,7 +226,7 @@ th, td {
 }
 
 .export-section button:hover {
-    background: #1d4ed8;
+    background: #7e96d6;
     transform: translateY(-2px);
 }
 
@@ -260,7 +288,7 @@ th, td {
         margin:0;   
         font-size: 13px;
         padding: 1px;
-        background-color: #18dfbef3;
+        background-color: #81ecbff3;
     }
 
     .main {
@@ -276,5 +304,6 @@ th, td {
         width: 100% !important;
         height: auto !important;
         color: #eee3e3;
-    }
+        background-color: #0f172a;
+    }    
 }
