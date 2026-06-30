@@ -608,3 +608,25 @@ function toggleSidebar() {
     document.querySelector(".sidebar").classList.toggle("active");
     document.querySelector(".content").classList.toggle("active");
 }
+function resetPassword() {
+  const user = document.getElementById("resetUsername").value.trim();
+  const newPass = document.getElementById("newPassword").value.trim();
+
+  if (!user || !newPass) {
+    document.getElementById("resetMsg").innerText = "Enter username and new password.";
+    return;
+  }
+
+  const saved = localStorage.getItem("pass_" + user);
+
+  if (!saved) {
+    document.getElementById("resetMsg").innerText = "User not found.";
+    return;
+  }
+
+  localStorage.setItem("pass_" + user, newPass);
+  document.getElementById("resetMsg").innerText = "✅ Password reset successful!";
+  
+  // Redirect back to login
+  setTimeout(() => showPage("loginPage"), 1500);
+}
