@@ -307,7 +307,7 @@ el.innerText = "No spending yet.";
 else if(total < 5000)
 el.innerText = "✅ Spending healthy.";
 
-else if(total < 15000)
+else if(total < 20000)
 el.innerText = "⚠ Moderate spending.";
 
 else
@@ -316,36 +316,6 @@ el.innerText = "🚨 High spending detected.";
 
 
 /* ================= CHARTS ================= */
-
-/*function renderCharts(){
-
-const cat = {};
-const month = {};
-
-expenses.forEach(e=>{
-cat[e.type]=(cat[e.type]||0)+e.amount;
-
-const m=e.date.slice(0,7);
-month[m]=(month[m]||0)+e.amount;
-});
-/*
-/* ================= CHARTS ================= */
-
-// function renderCharts(){
-
-// if(expenses.length === 0){
-//     console.log("No data for chart");
-//     return;
-// }
-
-// expenses.forEach(e=>{
-//     const catName = e.type || "Uncategorized";
-//     cat[catName] = (cat[catName] || 0) + e.amount;
-
-//     const dateStr = e.date ? String(e.date) : new Date().toISOString();
-//     const m = dateStr.slice(0,7);
-//     month[m] = (month[m] || 0) + e.amount;
-// });
 function renderCharts(){
     if(expenses.length === 0){
         console.log("No data for chart");
@@ -364,7 +334,72 @@ function renderCharts(){
         month[m] = (month[m] || 0) + e.amount;
     });
 
-    /* PIE - Dashboard */
+    /* COLUMN - Dashboard */
+    // const dashColumnCtx = document.getElementById("dashboardColumnChart")?.getContext("2d");
+    // if(dashColumnCtx){
+    //     if(window.dashboardColumnChartInstance) window.dashboardColumnChartInstance.destroy();
+    //     window.dashboardColumnChartInstance = new Chart(dashColumnCtx,{
+    //         type:"bar",
+    //         data:{
+    //             labels:Object.keys(cat),
+    //             datasets:[{
+    //                 label:"Category Spend",
+    //                 data:Object.values(cat),
+    //                 backgroundColor:"rgba(54,162,235,0.7)"
+    //             }]
+    //         },
+    //         options:{
+    //             plugins:{ legend:{ display:false } },
+    //             scales:{
+    //                 x:{ title:{ display:true, text:"Categories" } },
+    //                 y:{ title:{ display:true, text:"Amount (₹)" } }
+    //             }
+    //         }
+    //     });
+    // }
+const dashColumnCtx = document.getElementById("dashboardColumnChart")?.getContext("2d");
+if(dashColumnCtx){
+    if(window.dashboardColumnChartInstance) window.dashboardColumnChartInstance.destroy();
+    window.dashboardColumnChartInstance = new Chart(dashColumnCtx,{
+        type:"bar",
+        data:{
+            labels:Object.keys(cat),
+            datasets:[{
+                label:"Category Spend",
+                data:Object.values(cat),
+                // 🎨 Multiple colors for each bar
+                backgroundColor:[
+                    "rgba(255,99,132,0.7)",   // Red
+                    "rgba(54,162,235,0.7)",   // Blue
+                    "rgba(75,192,192,0.7)",   // Teal
+                    "rgba(255,206,86,0.7)",   // Yellow
+                    "rgba(153,102,255,0.7)"   // Purple
+                ],
+                borderColor:[
+                    "rgba(255,99,132,1)",
+                    "rgba(54,162,235,1)",
+                    "rgba(75,192,192,1)",
+                    "rgba(255,206,86,1)",
+                    "rgba(153,102,255,1)"
+                ],
+                borderWidth:2
+            }]
+        },
+        options:{
+            plugins:{ legend:{ display:false } },
+            scales:{
+                x:{
+                    title:{ display:true, text:"Categories", color:"#f1f5f9" },
+                    ticks:{ color:"#ffcc00", font:{ weight:"bold" } } // 🖌 Category names color
+                },
+                y:{
+                    title:{ display:true, text:"Amount (₹)", color:"#f1f5f9" },
+                    ticks:{ color:"#00ffcc" } // 🖌 Y-axis numbers color
+                }
+            }
+        }
+    });
+}/* PIE - Dashboard */
     const dashPieCtx = document.getElementById("dashboardPieChart")?.getContext("2d");
     if(dashPieCtx){
         if(pieChartInstance) pieChartInstance.destroy();
@@ -384,7 +419,7 @@ function renderCharts(){
         });
     }
 
-    /* BAR */
+    /* BAR - Monthly */
     const barCtx = document.getElementById("monthlyChart")?.getContext("2d");
     if(barCtx){
         if(monthlyChartInstance) monthlyChartInstance.destroy();
@@ -394,7 +429,7 @@ function renderCharts(){
         });
     }
 
-    /* LINE */
+    /* LINE - Trend */
     const lineCtx = document.getElementById("lineChart")?.getContext("2d");
     if(lineCtx){
         if(lineChartInstance) lineChartInstance.destroy();
@@ -404,93 +439,59 @@ function renderCharts(){
         });
     }
 
-    /* COLUMN */
+    /* COLUMN - Reports */
     const columnCtx = document.getElementById("columnChart")?.getContext("2d");
     if(columnCtx){
         if(window.columnChartInstance) window.columnChartInstance.destroy();
         window.columnChartInstance = new Chart(columnCtx,{
             type:"bar",
-            data:{ labels:Object.keys(cat), datasets:[{label:"Category Spend",data:Object.values(cat),backgroundColor:"rgba(54,162,235,0.6)"}] },
+            data:{ labels:Object.keys(cat), datasets:[{label:"Category Spend",data:Object.values(cat),backgroundColor:"rgba(75,192,192,0.6)"}] },
             options:{ plugins:{legend:{display:false}}, scales:{x:{title:{display:true,text:"Categories"}},y:{title:{display:true,text:"Amount (₹)"}}}}
         });
     }
 }
-
-
-
-// ... rest of your Chart.js instantiation logic remains exactly the same
-    
-
-/* PIE */
-const pieCtx = document.getElementById("pieChart").getContext("2d");
-
-if(pieChartInstance) pieChartInstance.destroy();
-
-pieChartInstance = new Chart(pieCtx,{
-type:"pie",
-data:{
-labels:Object.keys(cat),
-datasets:[{data:Object.values(cat)}]
-}
-});
-
-
-/* BAR */
-const barCtx = document.getElementById("monthlyChart").getContext("2d");
-
-if(monthlyChartInstance) monthlyChartInstance.destroy();
-
-monthlyChartInstance = new Chart(barCtx,{
-type:"bar",
-data:{
-labels:Object.keys(month),
-datasets:[{label:"Monthly Spend",data:Object.values(month)}]
-}
-});
-
-
-/* LINE */
-const lineCtx = document.getElementById("lineChart").getContext("2d");
-
-if(lineChartInstance) lineChartInstance.destroy();
-
-lineChartInstance = new Chart(lineCtx,{
-type:"line",
-data:{
-labels:Object.keys(cat),
-datasets:[{
-label:"Expense Trend",
-data:Object.values(cat),
-tension:0.4
-}]
-}
-});
-/* CLUSTERED COLUMN */
-const columnCtx = document.getElementById("columnChart").getContext("2d");
-
-if(window.columnChartInstance) window.columnChartInstance.destroy();
-
-window.columnChartInstance = new Chart(columnCtx, {
-    type: "bar",
-    data: {
-        labels: Object.keys(cat),
-        datasets: [{
-            label: "Category Spend",
-            data: Object.values(cat),
-            backgroundColor: "rgba(54, 162, 235, 0.6)"
-        }]
-    },
-    options: {
-        plugins: {
-            legend: { display: false }
+const dashColumnCtx = document.getElementById("dashboardColumnChart")?.getContext("2d");
+if(dashColumnCtx){
+    if(window.dashboardColumnChartInstance) window.dashboardColumnChartInstance.destroy();
+    window.dashboardColumnChartInstance = new Chart(dashColumnCtx,{
+        type:"bar",
+        data:{
+            labels:Object.keys(cat),
+            datasets:[{
+                label:"Category Spend",
+                data:Object.values(cat),
+                backgroundColor:[
+                    "rgba(255,99,132,0.7)",
+                    "rgba(54,162,235,0.7)",
+                    "rgba(75,192,192,0.7)",
+                    "rgba(255,206,86,0.7)",
+                    "rgba(153,102,255,0.7)"
+                ],
+                borderColor:[
+                    "rgba(255,99,132,1)",
+                    "rgba(54,162,235,1)",
+                    "rgba(75,192,192,1)",
+                    "rgba(255,206,86,1)",
+                    "rgba(153,102,255,1)"
+                ],
+                borderWidth:2
+            }]
         },
-        scales: {
-            x: { title: { display: true, text: "Categories" } },
-            y: { title: { display: true, text: "Amount (₹)" } }
+        options:{
+            plugins:{ legend:{ display:false } },
+            scales:{
+                x:{
+                    title:{ display:true, text:"Categories", color:"#f1f5f9" },
+                    ticks:{ color:"#ffcc00", font:{ weight:"bold" } }
+                },
+                y:{
+                    title:{ display:true, text:"Amount (₹)", color:"#f1f5f9" },
+                    ticks:{ color:"#00ffcc" }
+                }
+            }
         }
-    }
-});
-
+    });
+}
 
 /* ================= SHEET SWITCH ================= */
 
