@@ -123,12 +123,25 @@ body {
     /* background: #16ccda; */
     padding: 20px;
     margin-bottom: 20px;
+    margin-top: 20px;
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(25, 226, 68, 0.3);
     transition: 0.2s;
-    color: #19191a;
-    background: #0f1318;
-  color: #f1f5f9;
+    background: #171817;
+  color: #f0eeee;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(13, 14, 14, 0.4);
+}
+.Dashboardcard {
+    /* background: #16ccda; */
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(25, 226, 68, 0.3);
+    transition: 0.2s;
+    background: #06ecc6;
+  color: #101011;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(24, 31, 32, 0.4);
 }
@@ -288,7 +301,7 @@ th, td {
         margin:0;   
         font-size: 13px;
         padding: 1px;
-        background-color: #81ecbff3;
+        background-color: #14e9ccf3;
     }
 
     .main {
